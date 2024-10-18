@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO="refracta/dcss-server"
+REPO="LazyGuyWithRSI/dcss-server"
 SPLIT_SIZE="1GiB"
 KEEP_FILES=false
 SAME_OWNER=false
