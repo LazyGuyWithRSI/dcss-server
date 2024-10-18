@@ -57,10 +57,10 @@ jobs:
       - name: Push image
         run: |
           TIMESTAMP=$(date -u +"%y%m%d%H%M")
-          docker tag refracta/dcss-server:latest refracta/dcss-server:$TIMESTAMP
+          docker tag LazyGuyWithRSI/dcss-server:latest LazyGuyWithRSI/dcss-server:$TIMESTAMP
           echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
-          docker push refracta/dcss-server:$TIMESTAMP
-          docker push refracta/dcss-server:latest
+          docker push LazyGuyWithRSI/dcss-server:$TIMESTAMP
+          docker push LazyGuyWithRSI/dcss-server:latest
         env:
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
           DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
