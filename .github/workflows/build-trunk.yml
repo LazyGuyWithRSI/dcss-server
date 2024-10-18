@@ -3,6 +3,7 @@ name: build-trunk
 on:
   push:
     branches: [ stable, develop, test-* ]
+  workflow_dispatch:
 
 jobs:
   build:
