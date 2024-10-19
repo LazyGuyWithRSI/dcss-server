@@ -276,7 +276,7 @@ umask = None # e.g. 0077
 
 chroot = "%%DGL_CHROOT%%"
 
-pidfile = "%%CHROOT_WEBDIR%%/webtiles.pid"
+pidfile = "%%CHROOT_WEBDIR%%/run/webtiles.pid"
 daemon = True # If true, the server will detach from the session after startup
 
 # Set to a URL with %s where lowercased player name should go in order to
