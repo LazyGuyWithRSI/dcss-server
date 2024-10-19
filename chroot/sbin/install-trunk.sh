@@ -68,6 +68,8 @@ copy-data-files() {
     cp source/webserver/templates/client.html $WEBDIR/templates/
     cp source/webserver/templates/game_links.html $WEBDIR/templates/
 
+    echo "\n\nPATCHING WEBSERVER\n\n"
+
     # AFAIK current server admins have customizations in these files, so only
     # copy the other templates over if they're not already present.
     cp --no-clobber source/webserver/templates/*.html $WEBDIR/templates/

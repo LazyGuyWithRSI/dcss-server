@@ -1,6 +1,6 @@
 services:
   dcss-server:
-    image: refracta/dcss-server:latest
+    image: LazyGuyWithRSI/dcss-server:latest
     tty: true
     stdin_open: true
     build:
