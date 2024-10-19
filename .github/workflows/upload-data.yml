@@ -52,19 +52,7 @@ jobs:
           ls data/games | xargs
           ! grep -q -e "Error:" -e "Errno" -e "Error 1" -e "\[fail\]" -e "failed to solve:" docker-compose.log
         working-directory: server
-
-      - name: Push image
-        run: |
-          TIMESTAMP=$(date -u +"%y%m%d%H%M")
-          docker tag refracta/dcss-server:latest refracta/dcss-server:$TIMESTAMP
-          echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
-          docker push refracta/dcss-server:$TIMESTAMP
-          docker push refracta/dcss-server:latest
-        env:
-          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
-        working-directory: server
-
+        
       - name: Upload data
         run: |
           GH_TOKEN=$GH_TOKEN docker compose run --rm -e CMD='$SCRIPTS/utils/clean-ccache.sh' dcss-server
