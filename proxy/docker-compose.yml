@@ -1,0 +1,52 @@
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    # Uncomment the next line if you uncomment anything in the section
+    # environment:
+      # Uncomment this if you want to change the location of
+      # the SQLite DB file within the container
+      # DB_SQLITE_FILE: "/data/database.sqlite"
+
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+
+  goaccess:
+    image: 'xavierh/goaccess-for-nginxproxymanager:latest'
+    container_name: goaccess
+    restart: always
+    ports:
+      - '7880:7880'
+    environment:
+      - TZ=America/New_York         
+      - SKIP_ARCHIVED_LOGS=False #optional
+      - DEBUG=False #optional
+      - BASIC_AUTH=False #optional
+      - BASIC_AUTH_USERNAME=a #optional
+      - BASIC_AUTH_PASSWORD=a #optional   
+      - EXCLUDE_IPS=127.0.0.1 #optional - comma delimited 
+      - LOG_TYPE=NPM #optional - more information below
+      - ENABLE_BROWSERS_LIST=True #optional - more information below
+      - CUSTOM_BROWSERS=Kuma:Uptime,TestBrowser:Crawler #optional - comma delimited, more information below
+      - HTML_REFRESH=5 #optional - Refresh the HTML report every X seconds. https://goaccess.io/man
+      - KEEP_LAST=30 #optional - Keep the last specified number of days in storage. https://goaccess.io/man
+      - PROCESSING_THREADS=1 #optional - This parameter sets the number of concurrent processing threads in the program's execution, affecting log data analysis, typically adjusted based on CPU cores. Default is 1. https://goaccess.io/man
+    volumes:
+      - ./data:/opt/log
+      - /path/to/host/custom:/opt/custom #optional, required if using log_type = CUSTOM
+networks:
+  default:
+    external:
+      name: crawl
