@@ -1,3 +1,7 @@
+networks:
+  crawl:
+    external: true
+
 services:
   dcss-server:
     image: LazyGuyWithRSI/dcss-server:latest
@@ -6,12 +10,12 @@ services:
     build:
       context: ../
       dockerfile: server/Dockerfile
-    ports:
-      - "0:22"
-      - "0:8022"
-      - "0:8080"
-      - "0:8081"
-      - "0:8082"
+    #ports:
+      # - "0:22"
+      # - "0:8022"
+      #- "8080:8080"
+      # - "0:8081"
+      # - "0:8082"
     volumes:
       - ./data/config:/home/crawl-dev/dgamelaunch-config
       - ./data/versionsdb:/versionsdb
@@ -27,3 +31,5 @@ services:
       - USE_DWEM
       - USE_CNC_CONFIG
       - GH_TOKEN
+    networks:
+      - crawl
