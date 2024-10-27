@@ -21,10 +21,10 @@ if [ ! -f "$INIT_FLAG_FILE" ]; then
 fi
 
 echo "cpoying template files..."
-echo "$(<source/webserver/templates/client.html)"
-echo "$(<source/webserver/templates/game_links.html)"
-cp source/webserver/templates/client.html $WEBDIR/templates/
-cp source/webserver/templates/game_links.html $WEBDIR/templates/
+echo "$(<$SCRIPTS/../webserver/templates/client.html)"
+echo "$(<$SCRIPTS/../webserver/templates/game_links.html)"
+cp $SCRIPTS/../templates/client.html $WEBDIR/templates/
+cp $SCRIPTS/../webserver/templates/game_links.html $WEBDIR/templates/
 
 function safe-exit {
     echo "Stopping SSH service..."
