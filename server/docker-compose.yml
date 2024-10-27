@@ -10,8 +10,8 @@ services:
     build:
       context: ../
       dockerfile: server/Dockerfile
-    #ports:
-      # - "0:22"
+    ports:
+       - "1326:22"
       # - "0:8022"
       #- "8080:8080"
       # - "0:8081"

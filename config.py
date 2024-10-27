@@ -22,6 +22,8 @@ logging_config = {
     "format": "%(asctime)s %(levelname)s: %(message)s"
 }
 
+load_logging_rate = 10
+
 password_db = "%%CHROOT_LOGIN_DB%%"
 
 static_path = "%%CHROOT_WEBDIR%%/static"
