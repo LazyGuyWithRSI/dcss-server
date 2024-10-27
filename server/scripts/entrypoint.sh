@@ -23,7 +23,7 @@ fi
 echo "cpoying template files..."
 echo "$(<$SCRIPTS/../etc/webserver/templates/client.html)"
 echo "$(<$SCRIPTS/../etc/webserver/templates/game_links.html)"
-cp $SCRIPTS/../etc/templates/client.html $WEBDIR/templates/
+cp $SCRIPTS/../etc/webserver/templates/client.html $WEBDIR/templates/
 cp $SCRIPTS/../etc/webserver/templates/game_links.html $WEBDIR/templates/
 
 function safe-exit {
