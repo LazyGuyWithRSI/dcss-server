@@ -20,7 +20,9 @@ if [ ! -f "$INIT_FLAG_FILE" ]; then
   touch "$INIT_FLAG_FILE"
 fi
 
-
+echo "cpoying template files..."
+echo "$(<source/webserver/templates/client.html)"
+echo "$(<source/webserver/templates/game_links.html)"
 cp source/webserver/templates/client.html $WEBDIR/templates/
 cp source/webserver/templates/game_links.html $WEBDIR/templates/
 
