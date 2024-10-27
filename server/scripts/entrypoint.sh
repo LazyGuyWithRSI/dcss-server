@@ -20,6 +20,10 @@ if [ ! -f "$INIT_FLAG_FILE" ]; then
   touch "$INIT_FLAG_FILE"
 fi
 
+
+cp source/webserver/templates/client.html $WEBDIR/templates/
+cp source/webserver/templates/game_links.html $WEBDIR/templates/
+
 function safe-exit {
     echo "Stopping SSH service..."
     service ssh stop
