@@ -3,8 +3,6 @@ name: upload-data
 on:
   push:
     branches: [ develop, upload-data ]
-  schedule:
-    - cron: '0 */12 * * *'
   workflow_dispatch:
 
 jobs:
